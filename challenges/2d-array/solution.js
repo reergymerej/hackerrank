@@ -69,13 +69,15 @@ function sumArray (arr) {
 // Complete the hourglassSum function below.
 function hourglassSum(arr) {
   const hourGlasses = getHourGlasses(arr)
-  let maxSum = 0
+  let maxSum
 
   hourGlasses.forEach(function (hourGlass) {
     const sum = hourGlass.reduce(function (accumulator, currentValue) {
       return accumulator + sumArray(currentValue)
     }, 0)
-    maxSum = Math.max(sum, maxSum)
+    maxSum = (maxSum === undefined)
+      ? sum
+      : Math.max(sum, maxSum)
   })
 
   // return max sum
