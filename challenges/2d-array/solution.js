@@ -67,13 +67,10 @@ function sumArray (arr) {
 }
 
 // Complete the hourglassSum function below.
-// return an integer, the maximum hourglass sum in the array
 function hourglassSum(arr) {
-  // find each hour glass
   const hourGlasses = getHourGlasses(arr)
   let maxSum = 0
 
-  // sum each
   hourGlasses.forEach(function (hourGlass) {
     const sum = hourGlass.reduce(function (accumulator, currentValue) {
       return accumulator + sumArray(currentValue)
