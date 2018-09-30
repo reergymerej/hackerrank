@@ -85,6 +85,7 @@ function hourglassSum(arr) {
 }
 
 function main() {
+  process.stdout.write(process.env.OUTPUT_PATH)
     const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
 
     let arr = Array(6);

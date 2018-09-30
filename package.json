@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "node ./test.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "chokidar": "^2.0.4"
+  }
+}
