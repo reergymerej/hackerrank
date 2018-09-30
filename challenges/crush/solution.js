@@ -25,29 +25,11 @@ function readLine() {
     return inputString[currentLine++];
 }
 
-function getArrayOfLength(length, initialValue) {
-  const arr = []
-  while (length--) {
-    arr.push(initialValue)
-  }
-  return arr
-}
-
-function applyOperation(arr, operation) {
-  const min = operation[0] - 1
-  const max = operation[1] - 1
-  const additive = operation[2]
-
-  return arr.map((value, i) => (i >= min && i <= max)
-    ? additive + value
-    : value)
-}
-
 // Complete the arrayManipulation function below.
 function arrayManipulation(n, queries) {
-  return Math.max.apply(this,
-    queries.reduce((accumulator, query) => applyOperation(accumulator, query), getArrayOfLength(n, 0))
-  )
+  // It's too slow to loop through all values.
+  // Instead, use the queries as markers.
+
 }
 
 function main() {
