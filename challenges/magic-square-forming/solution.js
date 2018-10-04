@@ -24,37 +24,39 @@ function readLine() {
     return inputString[currentLine++];
 }
 
+let solution = [
+  [8, 1, 6],
+  [3, 5, 7],
+  [4, 9, 2],
+]
+
+const rotate = (arr) => [
+  [ arr[2][0], arr[1][0], arr[0][0] ],
+  [ arr[2][1], arr[1][1], arr[0][1] ],
+  [ arr[2][2], arr[1][2], arr[0][2] ],
+]
+
+const flip = (arr) => [
+  [ arr[0][2], arr[0][1], arr[0][0] ],
+  [ arr[1][2], arr[1][1], arr[1][0] ],
+  [ arr[2][2], arr[2][1], arr[2][0] ],
+]
+
+const allSolutions = []
+
+for (let i = 0; i < 4; i++) {
+  solution = rotate(solution)
+  allSolutions.push(solution)
+  solution = flip(solution)
+  allSolutions.push(solution)
+}
+
 // Complete the formingMagicSquare function below.
 function formingMagicSquare(s) {
   let totalCost = 0
+  console.log(solution)
 
-  // Always put 5 in the middle.
-  const center = s[1][1]
-  totalCost += Math.abs(center - 5)
-
-  const pairs = [
-    [s[0][0], s[2][2]],
-    [s[0][1], s[2][1]],
-    [s[0][2], s[2][0]],
-    [s[1][0], s[1][2]],
-  ]
-
-  const isValidPair = (a, b) => {
-    return !([a, b].includes(5))
-      && a + b === 10
-  }
-
-  pairs.forEach(pair => {
-    const a = pair[0]
-    const b = pair[1]
-    const valid = isValidPair(a, b)
-    if (!valid) {
-      const sum = a + b
-      const costToFix = Math.abs(sum - 10)
-      // console.log(pair, sum, costToFix)
-      totalCost += costToFix
-    }
-  })
+  console.log(allSolutions)
 
   return totalCost
 }
