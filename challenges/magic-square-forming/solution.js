@@ -36,10 +36,16 @@ const rotate = (arr) => [
   [ arr[2][2], arr[1][2], arr[0][2] ],
 ]
 
-const flip = (arr) => [
+const flipX = (arr) => [
   [ arr[0][2], arr[0][1], arr[0][0] ],
   [ arr[1][2], arr[1][1], arr[1][0] ],
   [ arr[2][2], arr[2][1], arr[2][0] ],
+]
+
+const flipY = (arr) => [
+  [ arr[2][0], arr[2][1], arr[2][2] ],
+  [ arr[1][0], arr[1][1], arr[1][2] ],
+  [ arr[0][0], arr[0][1], arr[0][2] ],
 ]
 
 const allSolutions = []
@@ -47,18 +53,35 @@ const allSolutions = []
 for (let i = 0; i < 4; i++) {
   solution = rotate(solution)
   allSolutions.push(solution)
-  solution = flip(solution)
+  solution = flipX(solution)
   allSolutions.push(solution)
+  solution = flipY(solution)
+  allSolutions.push(solution)
+}
+
+const getCost = (a, b) => {
+  let cost = 0
+  for (let row = 0; row < a.length; row++) {
+    for (let col = 0; col < a[row].length; col++) {
+      const start = a[row][col]
+      const end = b[row][col]
+      cost += Math.abs(start - end)
+    }
+  }
+  return cost
 }
 
 // Complete the formingMagicSquare function below.
 function formingMagicSquare(s) {
-  let totalCost = 0
-  console.log(solution)
+  let lowestCost
+  allSolutions.forEach(solution => {
+    const cost = getCost(s, solution)
+    lowestCost = lowestCost === undefined
+      ? cost
+      : Math.min(lowestCost, cost)
+  })
 
-  console.log(allSolutions)
-
-  return totalCost
+  return lowestCost
 }
 
 function main() {
