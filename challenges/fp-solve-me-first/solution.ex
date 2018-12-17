@@ -1,7 +1,10 @@
 defmodule Solution do
-  input = IO.read(:stdio, :all)
-  lines = String.split(input)
+  lines =
+    IO.read(:stdio, :all)
+    |> String.split
   ints = Enum.map(lines, fn x -> String.to_integer x end)
-  result = List.foldl(ints, 0, fn x, acc -> x + acc end)
-  IO.puts(result)
+
+  IO.puts(
+    List.foldl(ints, 0, fn x, acc -> x + acc end)
+  )
 end
