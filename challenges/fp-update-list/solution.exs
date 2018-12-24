@@ -1,0 +1,5 @@
+IO.read(:stdio, :all)
+  |> String.split()
+  |> Enum.map(fn(x) -> String.to_integer(x) end)
+  |> Enum.map(fn(x) -> abs(x) end)
+  |> Enum.each(fn(x) -> IO.puts(x) end)
