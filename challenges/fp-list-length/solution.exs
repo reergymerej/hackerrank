@@ -1,7 +1,7 @@
 defmodule Solution do
   def get_count(list, count) do
     case list  do
-      [h|t] ->
+      [_|t] ->
         get_count(t, count + 1)
       _ ->
         count
